@@ -42,7 +42,7 @@ function StepsPage() {
     >
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-[180px] pointer-events-none z-0
-      bg-[radial-gradient(ellipse_at_top,rgba(99,102,241,0.65)_0%,rgba(99,102,241,0.15)_40%,transparent_80%)]
+      bg-[radial-gradient(ellipse_at_top,rgb(99,102,241,0.65)_0%,rgb(99,102,241,0.15)_40%,transparent_80%)]
       blur-[10px] group-hover:opacity-100 transition-opacity duration-500"
       />
 
@@ -74,9 +74,7 @@ function StepsPage() {
 
         <div className="flex flex-col gap-2 mt-12">
           <h2 className="font-bold text-xl leading-[0.9]">{data.title}</h2>
-          <p className="text-xs text-gray-300 ">
-            {data.description}
-          </p>
+          <p className="text-xs text-gray-300 ">{data.description}</p>
         </div>
       </div>
     </div>
@@ -135,7 +133,7 @@ function StepsPage() {
         <div className="flex flex-col md:flex-row gap-6 items-center">
           {renderCard(steps[2], 2)}
           <div
-            className={`hidden md:block w-[135px] ${cardHeightClass} rounded-2xl bg-gradient-to-b from-[#1a1919] via-[#222] to-[#111] z-10 shrink-0`}
+            className={`hidden md:block w-[135px] ${cardHeightClass} rounded-2xl bg-gradient-to-b from-[#1a1919] via-[#222] to-[#222] -z-50 shrink-0`}
           />
           {renderCard(steps[3], 3)}
         </div>

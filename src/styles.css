@@ -1,0 +1,20 @@
+body {
+  margin: 0;
+  background: #000;
+  overflow: hidden;
+}
+
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.globe {
+  width: 600px;
+  height: 600px;
+  max-width: 100%;
+
+  aspect-ratio: 1;
+}

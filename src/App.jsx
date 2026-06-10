@@ -1,5 +1,4 @@
 import "./index.css";
-import BlogPage from "./pages/BlogPage";
 import HomePage from "./pages/HomePage";
 import ServicesPage from "./pages/ServicesPage";
 import StepsPage from "./pages/StepsPage";
@@ -9,18 +8,16 @@ import GetInTouchPage from "./pages/GetInTouchPage";
 import TopicsPage from "./pages/TopicsPage";
 import FooterPage from "./pages/FooterPage";
 
-import Slider from './pages/Slider'
+import Slider from "./pages/Slider";
 function App() {
   return (
     <>
       <HomePage />
       <TrustedPage />
       <ServicesPage />
-  
       <StepsPage />
       <ResultPage />
-
-      <Slider/>
+      <Slider />
       <TopicsPage />
       <GetInTouchPage />
       <FooterPage />

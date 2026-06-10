@@ -147,7 +147,7 @@ const Slider = () => {
             >
               <div className="absolute z-20 cursor-pointer overflow-hidden rounded-full bg-white flex items-center justify-center top-[18px] right-[18px] w-[42px] h-[42px]">
                 <FiPlus className="absolute text-blue-600 transition-all duration-350 ease-out opacity-100 scale-100 rotate-0 group-hover:opacity-0 group-hover:scale-50 group-hover:rotate-90 text-[22px]" />
-                <FiX className="absolute text-blue-600 transition-all duration-350 ease-out opacity-0 scale-50 -rotate-90 group-hover:opacity-1 text-[22px]" />
+                <FiX className="absolute text-blue-600 transition-all duration-350 ease-out opacity-0 scale-50 -rotate-90 group-hover:opacity-100 group-hover:scale-100 group-hover:rotate-0 text-[22px]" />
               </div>
 
               <div className="w-full h-full min-h-full max-h-full overflow-hidden relative">
@@ -158,7 +158,7 @@ const Slider = () => {
                 />
               </div>
 
-              <div className="absolute left-[15px] right-[15px] bottom-[15px] bg-black/40 backdrop-blur-sm text-white p-4 rounded-[20px] translate-y-[120%] transition-transform duration-[450ms] ease-in-out group-hover:translate-y-0 z-10">
+              <div className="absolute left-[15px] right-[15px] bottom-[15px] bg-black/70 border-t-2 border-r-1 border-l-2 border-b-1 border-white text-white p-4 rounded-[20px] translate-y-[120%] transition-transform duration-[450ms] ease-in-out group-hover:translate-y-0 z-10">
                 <h2 className="font-semibold mb-1 text-[18px]">
                   {slide.client}
                 </h2>
