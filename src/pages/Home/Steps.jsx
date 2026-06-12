@@ -82,6 +82,11 @@ function Steps() {
 
   return (
     <div className="relative overflow-hidden py-16 sm:py-20 bg-black px-4">
+            <div
+        className="hidden lg:block absolute bottom-0 left-0 right-0 w-full h-[120px]
+        bg-[linear-gradient(to_right,rgba(59,130,246,0.8),rgba(168,85,247,0.8),transparent)]
+        blur-2xl z-0"
+      />
       <div className="relative z-10 text-white text-center mb-12 sm:mb-16">
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight px-2">
           Simple. Transparent. Effective
