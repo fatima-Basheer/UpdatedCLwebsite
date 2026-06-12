@@ -4,12 +4,12 @@ import ServicesDropdown from "./ServicesDropdown";
 import { navMenu, servicesList } from "./navigationData";
 import { IoMdMenu, IoMdClose, IoMdArrowDropdown } from "react-icons/io";
 import { Link } from "react-router-dom";
-
+import BookCall from "./BookCall";
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [servicesHovered, setServicesHovered] = useState(false);
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const handleMouseEnter = () => setServicesHovered(true);
   const handleMouseLeave = () => setServicesHovered(false);
 
@@ -80,6 +80,7 @@ function Header() {
         <ServicesDropdown
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
+          onScheduleCall={() => setIsModalOpen(true)}
         />
       )}
 
@@ -138,6 +139,11 @@ function Header() {
               Contact Us
             </Button>
           </div>
+        </div>
+      )}
+      {isModalOpen && (
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50">
+          <BookCall onClose={() => setIsModalOpen(false)} />
         </div>
       )}
     </header>

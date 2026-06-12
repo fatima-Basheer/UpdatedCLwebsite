@@ -7,8 +7,8 @@ function Button({ children, className = "", variant = "primary" }) {
     secondary: "bg-gray-700 text-black hover:bg-gray-600 ",
     danger: "bg-red-600 text-white hover:bg-red-500",
     gray: "bg-gray-600 text-white hover:bg-gray-500",
-    outlineBlue:
-      "border border-white  text-blue-600 text-md font-semibold bg-transparent hover:bg-blue-100 ",
+    blueoutline:
+      "border border-blue-600  text-blue-600 text-md font-semibold bg-transparent hover:bg-blue-100 ",
     outline:
       "border-1 border-white hover:border-gray-300 text-black hover:bg-white hover:text-black",
   };

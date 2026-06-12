@@ -4,7 +4,14 @@ import { MdLaptopMac } from "react-icons/md";
 import { IoIosArrowForward } from "react-icons/io";
 import { Link } from "react-router-dom";
 
-function ServicesDropdown({ onMouseEnter, onMouseLeave }) {
+function ServicesDropdown({ onMouseEnter, onMouseLeave, onScheduleCall }) {
+  const handleConsultationClick = () => {
+    onMouseLeave();
+
+    if (onScheduleCall) {
+      onScheduleCall();
+    }
+  };
   return (
     <div
       onMouseEnter={onMouseEnter}
@@ -57,8 +64,7 @@ function ServicesDropdown({ onMouseEnter, onMouseLeave }) {
             </h2>
 
             <div className="grid grid-cols-2 gap-3">
-            
-              <div 
+              <div
                 onClick={onMouseLeave}
                 className="flex gap-2.5 bg-gray-50 p-2.5 rounded-xl items-center border border-gray-200 hover:bg-gray-100 cursor-pointer"
               >
@@ -80,7 +86,7 @@ function ServicesDropdown({ onMouseEnter, onMouseLeave }) {
                 </div>
               </div>
 
-              <div 
+              <div
                 onClick={onMouseLeave}
                 className="flex gap-2.5 bg-gray-50 p-2.5 rounded-xl items-center border border-gray-200 hover:bg-gray-100 cursor-pointer"
               >
@@ -117,8 +123,8 @@ function ServicesDropdown({ onMouseEnter, onMouseLeave }) {
               </p>
             </div>
             <div className="text-right">
-              <span 
-                onClick={onMouseLeave}
+              <span
+                onClick={handleConsultationClick}
                 className="bg-blue-600 hover:bg-blue-500 text-white text-xs py-2.5 px-4 rounded-full transition-colors shadow-sm cursor-pointer inline-block"
               >
                 Schedule a consultation
