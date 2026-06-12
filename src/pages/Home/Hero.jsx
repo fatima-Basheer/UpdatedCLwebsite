@@ -33,7 +33,7 @@ function Hero() {
   return (
     <div
       ref={container}
-      className="relative min-h-[700px] overflow-hidden bg-[#e9f4ff]"
+      className="relative min-h-[100vh] md:min-h-[700px] overflow-hidden bg-[#e9f4ff]"
     >
       <div className="absolute top-0 right-0 w-[60vw] sm:w-[35vw] lg:w-[50vw] h-[80px] bg-gradient-to-b from-indigo-900 via-indigo-400 to-transparent blur-xl opacity-80" />
 
@@ -43,56 +43,58 @@ function Hero() {
         <Stair />
       </div>
 
-      <section className="relative z-10">
+      <section className="relative z-10 w-full">
         <div
           className="
             hero-content
             max-w-[1200px]
             mx-auto
             px-4
-            sm:px-5
+            sm:px-6
             md:px-4
-            pt-20
-            sm:pt-24
+            pt-24
+            sm:pt-28
             md:pt-32
-            lg:pt-26
-            xl:pt-46
-            pb-8
+            lg:pt-36
+            xl:pt-48
+            pb-12
+            md:pb-8
             flex
             flex-col
             md:flex-row
-            items-start
+            items-center
             md:items-center
             justify-between
-            gap-5
+            gap-10
+            md:gap-5
           "
         >
-          <div className="flex flex-col items-start text-left max-w-xl">
+          <div className="flex flex-col items-center md:items-start text-center md:text-left max-w-xl w-full">
             <span className="mb-4 inline-flex items-center rounded-full bg-white px-4 py-2 text-xs sm:text-sm text-black/80 shadow-md hover:bg-black hover:text-white transition-all">
               Welcome to CacheLogic
             </span>
 
-            <h1 className="text-black/90 text-4xl lg:text-5xl font-semibold leading-[1.2]">
-              Engineering AI-Powered <br className="hidden sm:block" />
-              Software That Works For <br className="hidden sm:block" />
+            <h1 className="text-black/90 text-3xl sm:text-4xl lg:text-5xl font-semibold leading-[1.2] tracking-tight">
+              Engineering AI-Powered 
+              Software That Works For
               You.
             </h1>
 
-            <p className="mt-5 max-w-md text-xs text-gray-800 leading-relaxed">
+            <p className="mt-5 max-w-md text-sm sm:text-base md:text-xs text-gray-800 leading-relaxed">
               Empowering businesses with cutting-edge technology and tailored
               Solutions.
             </p>
 
-            <div className="mt-6 flex flex-wrap gap-3">
-              <Button variant="primary" className="px-6 py-2">
+            <div className="mt-6 flex flex-col md:flex-row flex-wrap justify-center md:justify-start gap-3 w-full sm:w-auto">
+              <Button variant="primary" className="px-6 py-2.5 text-sm flex-1 sm:flex-initial justify-center">
                 Contact Us
               </Button>
-              <Button variant="outline" className="px-2 py-2">
+              <Button variant="outline" className="px-4 py-2.5 text-sm flex-1 sm:flex-initial justify-center">
                 Discover your Services
               </Button>
             </div>
 
-            <div className="mt-8 w-full">
+            <div className="mt-8 w-full flex justify-center md:justify-start">
               <Images />
             </div>
           </div>
