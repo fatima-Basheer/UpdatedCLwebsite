@@ -5,9 +5,8 @@ body,
 #root {
   height: 100%;
   overflow-x: hidden;
-font-family:'Manrope' ;
-
-} 
+  font-family: "Manrope";
+}
 
 .heading {
   perspective: 1000px;
@@ -313,11 +312,11 @@ font-family:'Manrope' ;
 }
 
 @layer utilities {
-  .services-grid > div:nth-child(3n+2) {
+  .services-grid > div:nth-child(3n + 2) {
     transform: translateY(20px);
   }
 
-  .services-grid > div:nth-child(3n+3) {
+  .services-grid > div:nth-child(3n + 3) {
     transform: translateY(40px);
   }
 }

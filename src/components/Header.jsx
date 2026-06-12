@@ -3,55 +3,59 @@ import Button from "./Button";
 import ServicesDropdown from "./ServicesDropdown";
 import { navMenu, servicesList } from "./navigationData";
 import { IoMdMenu, IoMdClose, IoMdArrowDropdown } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [servicesHovered, setServicesHovered] = useState(false);
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
+
+  const handleMouseEnter = () => setServicesHovered(true);
+  const handleMouseLeave = () => setServicesHovered(false);
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 px-4 sm:px-6 md:px-4 lg:px-6 xl:px-12 pb-4 py-4">
-      <div className="w-full max-w-[1200px] mx-auto flex items-center justify-between relative overflow-visible">
+    <header className="fixed top-0 left-0 w-full z-50 px-4 sm:px-6 md:px-4 lg:px-6 xl:px-10 pb-4 py-4">
+      <div className="w-full max-w-[1250px] mx-auto flex items-center justify-between relative overflow-visible">
         <div className="flex-shrink-0">
           <img
             src="/Logo.svg"
             alt="Logo"
-            className="w-24 sm:w-28 md:w-32 lg:w-36 h-auto"
+            className="w-24 sm:w-26 md:w-28 lg:w-32 h-auto"
           />
         </div>
 
-        <div
-          className="hidden lg:flex items-center"
-          onMouseEnter={() => setServicesHovered(true)}
-          onMouseLeave={() => setServicesHovered(false)}
-        >
-          <nav className="flex items-center gap-8 border-2 border-white/30 px-6 py-2 rounded-full text-sm text-black/70 bg-white/30 backdrop-blur-2xl shadow-xl/20 font-medium">
+        <div className="hidden lg:flex items-center">
+          <nav className="flex items-center gap-8 border-2 border-white/30 px-6 py-2 rounded-full text-sm text-black/70 bg-white/30 backdrop-blur-2xl shadow-xl font-medium">
             {navMenu.map((item, index) => {
               if (item.hasDropdown) {
                 return (
                   <div
                     key={index}
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
                     className="flex items-center gap-1 cursor-pointer hover:text-blue-600 duration-300 py-1"
                   >
                     <span>{item.label}</span>
                     <IoMdArrowDropdown
-                      className={`text-lg transition-transform duration-300 ${servicesHovered ? "rotate-180 text-blue-600" : ""}`}
+                      className={`text-lg transition-transform duration-300 ${
+                        servicesHovered ? "rotate-180 text-blue-600" : ""
+                      }`}
                     />
                   </div>
                 );
               }
 
               return (
-                <a
+                <Link
+                  to={item.path}
                   key={index}
                   className="cursor-pointer hover:text-blue-600 duration-500"
                 >
                   {item.label}
-                </a>
+                </Link>
               );
             })}
           </nav>
-
-          {servicesHovered && <ServicesDropdown />}
         </div>
 
         <div className="hidden lg:block">
@@ -72,6 +76,13 @@ function Header() {
         </button>
       </div>
 
+      {servicesHovered && (
+        <ServicesDropdown
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        />
+      )}
+
       {menuOpen && (
         <div className="lg:hidden mt-4 mx-4 backdrop-blur-lg bg-white/10 rounded-2xl border border-white/20 p-5 text-black shadow-lg">
           <nav className="flex flex-col gap-4 font-medium">
@@ -80,32 +91,43 @@ function Header() {
                 {item.hasDropdown ? (
                   <div>
                     <button
-                      onClick={() => setServicesHovered(!servicesHovered)}
+                      onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}
                       className="w-full flex items-center justify-between cursor-pointer text-left hover:text-blue-500"
                     >
                       <span>{item.label}</span>
                       <IoMdArrowDropdown
-                        className={`text-xl transition-transform ${servicesHovered ? "rotate-180" : ""}`}
+                        className={`text-xl transition-transform ${
+                          mobileDropdownOpen ? "rotate-180" : ""
+                        }`}
                       />
                     </button>
-                    {servicesHovered && (
+
+                    {mobileDropdownOpen && (
                       <div className="pl-4 mt-2 flex flex-col gap-2 text-sm text-black/60 border-l border-white/20">
                         {servicesList.map((service, sIdx) => (
-                          <a
+                          <Link
                             key={sIdx}
-                            href={service.path}
+                            to={service.path}
+                            onClick={() => {
+                              setMenuOpen(false);
+                              setMobileDropdownOpen(false);
+                            }}
                             className="hover:text-blue-500 py-1"
                           >
                             {service.name}
-                          </a>
+                          </Link>
                         ))}
                       </div>
                     )}
                   </div>
                 ) : (
-                  <a className="block cursor-pointer hover:text-blue-500">
+                  <Link
+                    to={item.path}
+                    onClick={() => setMenuOpen(false)}
+                    className="block cursor-pointer hover:text-blue-500"
+                  >
                     {item.label}
-                  </a>
+                  </Link>
                 )}
               </div>
             ))}

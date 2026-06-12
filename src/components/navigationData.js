@@ -1,41 +1,60 @@
 export const navMenu = [
-  { label: "Home", hasDropdown: false },
-  { label: "Blog", hasDropdown: false },
-  { label: "Portfolio", hasDropdown: false },
-  { label: "Services", hasDropdown: true },
-  { label: "About us", hasDropdown: false },
-  { label: "Careers", hasDropdown: false },
-];
+  {
+    label: "Home",
+    path: "/",
+  },
 
+  {
+    label: "Blog",
+    path: "/blog",
+  },
+
+    {
+    label: "Portfolio",
+    path: "/portfolio",
+  },
+  {
+    label: "Services",
+    hasDropdown: true,
+  },
+    {
+    label: "About Us",
+    path: "/about",
+  },
+    {
+    label: "Careers",
+    path: "/careers",
+  },
+];
 export const servicesList = [
   {
     name: "Custom AI & ML solution ",
     des: "Smart automation and predictive business intelligence",
-    path: "#web-dev",
+     path: "/services/ai-ml",
   },
   {
-    name: "UI/UX Design",
+    name: "Custom Web & Mobile Apps ",
     des: "Smart automation and predictive business intelligence",
-    path: "#ui-ux",
+    path: "/services/web-mobile",
   },
   {
-    name: "Digital Marketing",
+    name: "Seamless Automation Solution",
     des: "Smart automation and predictive business intelligence",
-    path: "#marketing",
+       path: "/services/automation",
   },
   {
-    name: "Custom AI & ML solution ",
+    name: "Accelrate Development With DevOps",
     des: "Smart automation and predictive business intelligence",
-    path: "#web-dev",
+   path: "/services/devops",
   },
   {
-    name: "UI/UX Design",
+    name: "Robust Cybersecurity Solutions",
     des: "Smart automation and predictive business intelligence",
-    path: "#ui-ux",
+    path: "/services/cybersecurity"
   },
   {
-    name: "Digital Marketing",
+    name: "Tailored Enterprise Solutions",
     des: "Smart automation and predictive business intelligence",
-    path: "#marketing",
+     path: "/services/enterprise",
   },
 ];
