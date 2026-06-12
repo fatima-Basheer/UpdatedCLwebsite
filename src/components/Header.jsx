@@ -65,11 +65,11 @@ function Header() {
         </div>
 
         <button
-          className="lg:hidden z-50"
+          className="lg:hidden z-50 mt-3 mr-5"
           onClick={() => setMenuOpen(!menuOpen)}
         >
           {menuOpen ? (
-            <IoMdClose className="text-3xl bg-red-300 p-1 text-white rounded-full" />
+            <IoMdClose className="text-3xl bg-red-400 p-1 text-white rounded-full" />
           ) : (
             <IoMdMenu className="text-3xl bg-blue-500 p-1 text-white rounded-full" />
           )}

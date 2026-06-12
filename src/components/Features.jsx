@@ -46,7 +46,7 @@ function Features() {
   const [expandedId, setExpandedId] = useState(1);
 
   return (
-    <div className="w-full px-12 py-16 grid grid-cols-1 md:grid-cols-2 gap-1 items-stretch 2xl:px-85">
+    <div className="w-full px-4 sm:px-6  md:px-12 py-16 grid grid-cols-1 md:grid-cols-2 gap-1 items-stretch 2xl:px-85">
       <div className="w-full h-full min-h-[400px] flex items-center justify-center p-4">
         <img
           src="/servicesimg.svg"

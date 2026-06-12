@@ -25,7 +25,7 @@ const benefitItems = [
 
 function Benefits() {
   return (
-    <div className="min-h-screen bg-[#e9f4ff] flex items-center justify-center py-6 md:py-20 md:px-12">
+    <div className="min-h-screen bg-[#e9f4ff] flex items-center justify-center px-4 py-6 md:py-20 md:px-12">
       <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-12">
         <div className="flex flex-col gap-4">
           <h2 className="text-4xl md:text-5xl font-medium text-[#1e293b]">
