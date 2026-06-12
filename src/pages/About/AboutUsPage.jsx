@@ -6,6 +6,7 @@ function AboutUsPage() {
     <div className="relative">
       <AboutHero />
       <About />
+      
     </div>
   );
 }

@@ -3,6 +3,7 @@ import { servicesList } from "./navigationData";
 import { MdLaptopMac } from "react-icons/md";
 import { IoIosArrowForward } from "react-icons/io";
 import { Link } from "react-router-dom";
+
 function ServicesDropdown({ onMouseEnter, onMouseLeave }) {
   return (
     <div
@@ -29,7 +30,9 @@ function ServicesDropdown({ onMouseEnter, onMouseLeave }) {
           <div className="grid grid-cols-2 gap-x-4 gap-y-2.5">
             {servicesList.slice(0, 6).map((service, idx) => (
               <Link
+                key={service.id || idx}
                 to={service.path}
+                onClick={onMouseLeave}
                 className="flex items-start gap-2.5 p-1 hover:bg-gray-100 rounded-xl transition-colors"
               >
                 <div className="flex-shrink-0 text-blue-600 w-8 h-8 bg-blue-50 p-2 rounded-xl">
@@ -54,7 +57,11 @@ function ServicesDropdown({ onMouseEnter, onMouseLeave }) {
             </h2>
 
             <div className="grid grid-cols-2 gap-3">
-              <div className="flex gap-2.5 bg-gray-50 p-2.5 rounded-xl items-center border border-gray-200 hover:bg-gray-100">
+            
+              <div 
+                onClick={onMouseLeave}
+                className="flex gap-2.5 bg-gray-50 p-2.5 rounded-xl items-center border border-gray-200 hover:bg-gray-100 cursor-pointer"
+              >
                 <img
                   src="/download.jpeg"
                   alt="Feature 1"
@@ -73,7 +80,10 @@ function ServicesDropdown({ onMouseEnter, onMouseLeave }) {
                 </div>
               </div>
 
-              <div className="flex gap-2.5 bg-gray-50 p-2.5 rounded-xl items-center border border-gray-200 hover:bg-gray-100">
+              <div 
+                onClick={onMouseLeave}
+                className="flex gap-2.5 bg-gray-50 p-2.5 rounded-xl items-center border border-gray-200 hover:bg-gray-100 cursor-pointer"
+              >
                 <img
                   src="/download.jpeg"
                   alt="Feature 2"
@@ -107,7 +117,10 @@ function ServicesDropdown({ onMouseEnter, onMouseLeave }) {
               </p>
             </div>
             <div className="text-right">
-              <span className="bg-blue-600 hover:bg-blue-500 text-white text-xs py-2.5 px-4 rounded-full transition-colors shadow-sm cursor-pointer inline-block">
+              <span 
+                onClick={onMouseLeave}
+                className="bg-blue-600 hover:bg-blue-500 text-white text-xs py-2.5 px-4 rounded-full transition-colors shadow-sm cursor-pointer inline-block"
+              >
                 Schedule a consultation
               </span>
             </div>

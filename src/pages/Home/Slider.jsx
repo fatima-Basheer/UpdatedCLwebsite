@@ -130,7 +130,7 @@ const Slider = () => {
       ref={containerRef}
       className="relative m-0 p-0 h-screen w-screen bg-blue-100 text-black overflow-hidden select-none font-['Manrope']"
     >
-      <h1 className="text-center text-[24px] sm:text-[28px] font-semibold m-0 pt-10 leading-tight relative z-10">
+      <h1 className="text-center text-[24px] sm:text-[28px] 2xl:text-[50px] font-semibold m-0 pt-10 leading-tight relative z-10">
         What Our Client Says
       </h1>
 

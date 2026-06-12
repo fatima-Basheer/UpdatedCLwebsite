@@ -72,7 +72,7 @@ function Features() {
                   ${
                     isExpanded
                       ? "bg-gradient-to-l from-indigo-200 to-white pb-1.5 pt-1 shadow-sm border-blue-600"
-                      : "bg-slate-50/70 border-transparent hover:bg-slate-100 py-0.5"
+                      : "bg-slate-50/70 border-transparent py-0.5"
                   }`}
               >
                 <div className="flex items-center gap-4 flex-shrink-0">
