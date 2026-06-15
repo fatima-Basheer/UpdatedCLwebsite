@@ -35,7 +35,7 @@ function ServicesDropdown({ onMouseEnter, onMouseLeave, onScheduleCall }) {
           </div>
 
           <div className="grid grid-cols-2 gap-x-4 gap-y-2.5">
-            {servicesList.slice(0, 6).map((service, idx) => (
+            {servicesList.map((service, idx) => (
               <Link
                 key={service.id || idx}
                 to={service.path}
