@@ -7,7 +7,7 @@ function AboutHero() {
       <div className="absolute inset-x-0 top-0 bottom-0 w-full h-full pointer-events-none overflow-hidden z-0"></div>
           <div className="absolute top-0 right-0 w-[60vw] sm:w-[35vw] lg:w-[50vw] h-[80px] bg-gradient-to-b from-indigo-900 via-indigo-400 to-transparent blur-xl opacity-80" />
       <div className="relative z-10 flex flex-col items-center text-center max-w-4xl mx-auto gap-4 mt-6">
-        <div className="text-sm  text-gray-600 py-2 px-4 bg-white rounded-full">
+        <div className="text-sm font-medium text-gray-600 py-2 px-4 bg-white rounded-full">
           About us
         </div>
 

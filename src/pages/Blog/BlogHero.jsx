@@ -6,7 +6,7 @@ function BlogHero() {
       <div className="absolute top-0 right-0 w-[60vw] sm:w-[35vw] lg:w-[50vw] h-[80px] bg-gradient-to-b from-indigo-900 via-indigo-400 to-transparent blur-xl opacity-80" />
 
       <div className="relative z-10 flex flex-col items-center text-center max-w-3xl mx-auto gap-4">
-        <div className="text-sm font-semibold text-gray-600 py-2 px-4 bg-white rounded-full">
+        <div className="text-sm font-medium text-gray-600 py-2 px-4 bg-white rounded-full">
           Blogs
         </div>
 
