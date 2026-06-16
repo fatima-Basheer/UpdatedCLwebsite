@@ -138,8 +138,9 @@ function Result() {
             </div>
           </div>
 
-          <div className="relative w-full h-[250px] sm:h-[380px] md:h-[450px] overflow-visible select-none">
-            <div className="absolute bottom-0 top-0 left-0 right-0 sm:right-[95px] py-[3px] px-2 sm:p-6 bg-gray-300 rounded-xl md:rounded-3xl z-10">
+          <div className="relative w-full h-[300px] sm:h-[320px] md:h-[480px] lg:h-[540px] overflow-visible select-none">
+
+            <div className="absolute bottom-0 top-0 left-0 right-0 sm:right-[65px] py-[3px] px-2 sm:p-6 bg-gray-200 rounded-xl md:rounded-3xl z-10">
               <div className="h-full w-full relative overflow-hidden rounded-lg md:rounded-3xl">
                 <img
                   src={slides[currentIndex].image}
@@ -149,9 +150,10 @@ function Result() {
               </div>
             </div>
 
+    
             <div
               onClick={handleNext}
-              className="hidden sm:block absolute bottom-0 right-0 w-[80px] h-[70%] p-2 bg-gray-300 rounded-2xl cursor-pointer z-20 transition-opacity duration-300"
+              className="hidden sm:block absolute bottom-0 right-0 w-[50px] h-[70%] p-2 bg-gray-200 rounded-2xl cursor-pointer z-20 transition-opacity duration-300"
               style={{
                 padding: "8px 0px 8px 8px",
                 opacity: isAnimating && animType === "next" ? 0 : 1,
@@ -176,29 +178,29 @@ function Result() {
                   left:
                     animType === "next"
                       ? animStage === "start"
-                        ? "calc(100% - 80px)"
+                        ? "calc(100% - 50px)"
                         : "0px"
                       : animStage === "start"
                         ? "0px"
-                        : "calc(100% - 80px)",
+                        : "calc(100% - 50px)",
 
                   right:
                     animType === "next"
                       ? animStage === "start"
                         ? "0px"
-                        : "95px"
+                        : "65px"
                       : animStage === "start"
-                        ? "95px"
+                        ? "65px"
                         : "0px",
 
                   width:
                     animType === "next"
                       ? animStage === "start"
-                        ? "80px"
+                        ? "50px"
                         : "auto"
                       : animStage === "start"
-                        ? "calc(100% - 95px)"
-                        : "80px",
+                        ? "calc(100% - 65px)"
+                        : "50px",
 
                   height:
                     animType === "next"
@@ -217,37 +219,9 @@ function Result() {
                       : animStage === "start"
                         ? "24px 0px 24px 24px"
                         : "8px 0px 8px 8px",
-
-                  borderRadius:
-                    animType === "next"
-                      ? animStage === "start"
-                        ? "16px"
-                        : "24px"
-                      : animStage === "start"
-                        ? "24px"
-                        : "16px",
+                  borderRadius: "24px"
                 }}
-              >
-                <div
-                  className="h-full w-full relative overflow-hidden transition-all duration-700"
-                  style={{
-                    borderRadius:
-                      animType === "next"
-                        ? animStage === "start"
-                          ? "16px"
-                          : "24px"
-                        : animStage === "start"
-                          ? "24px"
-                          : "16px",
-                  }}
-                >
-                  <img
-                    src={animImage}
-                    alt="Moving Structural Frame"
-                    className="w-full h-full object-cover absolute left-0 top-0"
-                  />
-                </div>
-              </div>
+              />
             )}
           </div>
         </div>
