@@ -93,7 +93,7 @@ export default function Features() {
                 <img
                   src="/download-1.jpeg"
                   alt={item.title}
-                  className="h-16 w-16 rounded-lg object-cover bg-gray-200 sm:h-12 sm:w-12 sm:ml-4"
+                  className=" h-12 w-12 rounded-lg object-cover bg-gray-200 sm:h-12 sm:w-12 ml-5"
                 />
                 <div>
                   <h3 className="text-sm font-medium text-black line-clamp-2">
@@ -120,7 +120,7 @@ export default function Features() {
                 <img
                   src="/download-1.jpeg"
                   alt={item.title}
-                  className="h-16 w-16 rounded-lg object-cover bg-gray-200 sm:h-12 sm:w-12 sm:ml-4 "
+                  className="h-12 w-12 rounded-lg object-cover bg-gray-200 sm:h-12 sm:w-12 ml-5 "
                 />
                 <div>
                   <h3 className="text-sm font-medium text-black line-clamp-2">

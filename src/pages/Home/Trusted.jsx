@@ -1,6 +1,7 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+
 const statsData = [
   { value: "4", label: "years in market" },
   { value: "99", label: "Platform Availability " },
@@ -10,6 +11,8 @@ const statsData = [
 
 function Trusted() {
   const tickerRef = useRef();
+  const mobileContainerRef = useRef(); // ADDED: Dedicated ref for mobile elements
+  const [activeIndex, setActiveIndex] = useState(0); 
   const { contextSafe } = useGSAP();
 
   useGSAP(() => {
@@ -21,13 +24,87 @@ function Trusted() {
     });
   }, []);
 
+
+  useGSAP(() => {
+    const container = mobileContainerRef.current;
+    if (!container) return;
+
+    const imgMid = container.querySelector(".img-mid");
+    const imgFull = container.querySelector(".img-full");
+
+    if (imgMid && imgFull) {
+  
+      gsap.killTweensOf([imgMid, imgFull]);
+      gsap.set(imgMid, { opacity: 1, scaleX: 1, scaleY: 1, x: 0, y: 0 });
+      gsap.set(imgFull, { opacity: 0, scaleX: 1, scaleY: 1, x: 0, y: 0 });
+
+
+      gsap.to(imgFull, {
+        opacity: 1,
+        duration: 0.5,
+        delay: 0.05, 
+        ease: "power2.out",
+      });
+    }
+  }, { dependencies: [activeIndex], scope: mobileContainerRef });
+
+
+  const handleDotClick = contextSafe((index) => {
+    if (index === activeIndex) return;
+
+    const container = mobileContainerRef.current;
+    if (!container) return;
+
+    const textContainer = container.querySelector(".text-container");
+    const imgMid = container.querySelector(".img-mid");
+    const imgFull = container.querySelector(".img-full");
+
+    gsap.killTweensOf([textContainer, imgMid, imgFull]);
+
+
+    gsap.to(textContainer, {
+      opacity: 0,
+      y: -10,
+      duration: 0.2,
+      onComplete: () => {
+        setActiveIndex(index);
+        gsap.to(textContainer, {
+          opacity: 1,
+          y: 0,
+          duration: 0.3,
+          ease: "power2.out",
+        });
+      },
+    });
+
+
+    gsap.set(imgMid, { opacity: 1, scaleX: 1, scaleY: 1, x: 0, y: 0 });
+    gsap.set(imgFull, { opacity: 0, scaleX: 1, scaleY: 1, x: 0, y: 0 });
+
+    gsap.to(imgFull, {
+      opacity: 1,
+      duration: 0.5,
+      delay: 0.4, 
+      ease: "power2.out",
+    });
+  });
+
   const handleMouseEnter = contextSafe((e) => {
     const container = e.currentTarget;
     const img1 = container.querySelector(".img-initial");
     const img2 = container.querySelector(".img-mid");
     const img3 = container.querySelector(".img-full");
+    const textContainer = container.querySelector(".text-container");
 
-    gsap.killTweensOf([img1, img2, img3]);
+    gsap.killTweensOf([img1, img2, img3, textContainer]);
+
+    gsap.to(textContainer, {
+      y: -6,
+      duration: 0.45,
+      ease: "power3.out",
+      force3D: true,
+      overwrite: "auto",
+    });
 
     gsap.to(img1, {
       scale: 0.85,
@@ -72,8 +149,17 @@ function Trusted() {
     const img1 = container.querySelector(".img-initial");
     const img2 = container.querySelector(".img-mid");
     const img3 = container.querySelector(".img-full");
+    const textContainer = container.querySelector(".text-container");
 
-    gsap.killTweensOf([img1, img2, img3]);
+    gsap.killTweensOf([img1, img2, img3, textContainer]);
+
+    gsap.to(textContainer, {
+      y: 0,
+      duration: 0.45,
+      ease: "power3.out",
+      force3D: true,
+      overwrite: "auto",
+    });
 
     gsap.to(img1, {
       scale: 1,
@@ -106,16 +192,16 @@ function Trusted() {
   });
 
   return (
-    <div className="relative bg-black min-h-screen overflow-hidden px-4 sm:px-10 flex flex-col justify-between py-12">
+    <div className="relative bg-black min-h-screen overflow-hidden px-2 sm:px-6 flex flex-col justify-between py-12">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute bottom-0 right-0 w-[70vw] h-[5%] bg-gradient-to-r from-transparent to-indigo-600 blur-3xl opacity-70" />
         <div className="absolute top-0 right-0 w-[60vw] h-[10%] bg-gradient-to-l from-indigo-600 to-transparent blur-2xl opacity-50" />
       </div>
 
       <div className="text-center z-30 w-full mb-10">
-        <h1 className="text-white text-5xl font-medium leading-[1.2]">
+        <h1 className="text-white text-2xl lg:text-5xl font-medium leading-[1.1]">
           We're Committed To Lead Your
-          <br /> Digital Journey To Success.
+          <br className="hidden md:block" /> Digital Journey To Success.
         </h1>
         <p className="text-xs text-white/65 mt-4 mx-auto font-light">
           We have a proven track record of building scalable software solutions
@@ -123,60 +209,107 @@ function Trusted() {
         </p>
       </div>
 
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-2 z-30 my-auto px-4 md:px-20 xl:px-40 max-w-none">
-        {statsData.map((stat, index) => (
-          <div
-            key={index}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            className="relative pl-6 py-4 w-full cursor-pointer group transition-all duration-300 before:absolute before:left-0 before:top-0 before:w-[2px] before:h-0 before:bg-blue-600 before:transition-all before:duration-500 hover:before:h-full"
-          >
-            <div className="flex flex-col">
-              <div className="flex text-white items-center">
-                <span className="text-7xl font-semibold">{stat.value}</span>
-                <span className="font-medium text-5xl">+</span>
+      <div className="w-full relative z-30 my-auto">
+
+        <div className="hidden md:grid md:grid-cols-2 xl:grid-cols-4 gap-4 px-30 xl:px-55 2xl:px-130 max-w-none">
+          {statsData.map((stat, index) => (
+            <div
+              key={index}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              className="relative pl-6 w-full cursor-pointer group transition-all duration-300 before:absolute before:left-0 before:top-0 before:w-[2px] before:h-[0px] before:bg-blue-600 before:transition-all before:duration-500 md:hover:before:h-[348px]"
+            >
+              <div className="text-container flex flex-col">
+                <div className="flex text-white items-center">
+                  <span className="text-7xl font-medium">{stat.value}</span>
+                  <span className="font-medium text-5xl">+</span>
+                </div>
+                <span className="text-xs text-gray-400">{stat.label}</span>
               </div>
-              <span className="text-xs text-gray-400">{stat.label}</span>
+
+              <div className="mt-12 relative h-56 w-full overflow-hidden">
+                <img
+                  src="./trusted-section-initial-graph.svg"
+                  alt="Initial Graph"
+                  className="img-initial absolute inset-y-0 left-0 w-full h-full object-contain object-left-top"
+                />
+                <img
+                  src="./trusted-section-mid-graph-without-dot.svg"
+                  alt="Mid Graph"
+                  className="img-mid absolute inset-0 w-[115%] max-w-none h-full object-contain object-left-top opacity-0"
+                />
+                <img
+                  src="./trusted-section-full-graph.svg"
+                  alt="Full Graph"
+                  className="img-full absolute inset-0 w-[115%] max-w-none h-full object-contain object-left-top opacity-0"
+                />
+              </div>
             </div>
+          ))}
+        </div>
 
-            <div className="mt-8 relative h-36 w-full overflow-hidden">
-              <img
-                src="./trusted-section-initial-graph.svg"
-                alt="Initial Graph"
-                className="img-initial absolute inset-y-0 left-0 w-[85%] h-full object-contain object-left-top"
-              />
+<div 
+  ref={mobileContainerRef} 
+  className="mobile-track md:hidden flex flex-col justify-center items-center px-4 w-full"
+>
 
-              <img
-                src="./trusted-section-mid-graph-without-dot.svg"
-                alt="Mid Graph"
-                className="img-mid absolute inset-0 w-full h-full object-contain object-left-top opacity-0"
-              />
+  <div className="relative py-4 w-[85vw] flex flex-col items-center justify-center cursor-pointer group transition-all duration-300">
+    
 
-              <img
-                src="./trusted-section-full-graph.svg"
-                alt="Full Graph"
-                className="img-full absolute inset-0 w-full h-full object-contain object-left-top opacity-0"
-              />
-            </div>
-          </div>
-        ))}
+    <div className="text-container flex flex-col items-center text-center">
+      <div className="flex text-white items-center justify-center">
+        <span className="text-7xl font-medium">
+          {statsData[activeIndex].value}
+        </span>
+        <span className="font-medium text-5xl">+</span>
+      </div>
+      <span className="text-xs text-gray-400">
+        {statsData[activeIndex].label}
+      </span>
+    </div>
+
+  
+    <div className="mt-12 relative h-56 w-full max-w-sm overflow-hidden flex justify-center items-center">
+      <img
+        src="./trusted-section-initial-graph.svg"
+        alt="Initial Graph"
+        className="hidden sm:block img-initial absolute inset-0 w-full h-full object-contain object-center"
+      />
+
+      <img
+        src="./trusted-section-mid-graph-without-dot.svg"
+        alt="Mid Graph"
+        className="img-mid absolute inset-0 w-full h-full object-contain object-center opacity-100"
+      />
+      <img
+        src="./trusted-section-full-graph.svg"
+        alt="Full Graph"
+        className="img-full absolute inset-0 w-full h-full object-contain object-center opacity-0"
+      />
+    </div>
+  </div>
+</div>
+
+
+
+        <div className="flex md:hidden justify-center items-center gap-2 mt-8">
+          {statsData.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => handleDotClick(index)}
+              className={`h-[6px] rounded-full bg-white transition-all duration-300 ${
+                activeIndex === index ? "w-[24px]" : "w-[6px]"
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
       </div>
 
       <div className="w-full overflow-hidden py-14">
-        <div
-          ref={tickerRef}
-          className="flex items-center w-max whitespace-nowrap"
-        >
-          <img
-            src="movingtext.png"
-            alt="Moving text banner"
-            className="h-7 object-contain"
-          />
-          <img
-            src="movingtext.png"
-            alt="Moving text banner duplicate"
-            className="h-7 object-contain"
-          />
+        <div ref={tickerRef} className="flex items-center w-max whitespace-nowrap">
+          <img src="movingtext.png" alt="Moving text banner" className="h-7 object-contain" />
+          <img src="movingtext.png" alt="Moving text banner duplicate" className="h-7 object-contain" />
         </div>
       </div>
 

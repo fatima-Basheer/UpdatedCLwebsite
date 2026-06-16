@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { HiMiniMagnifyingGlass } from "react-icons/hi2";
 import Button from "../../components/Button";
+
 const leftImages = [
   "/Analytics1.svg",
   "/Analytics2.svg",
@@ -19,6 +20,7 @@ const rightImages = [
   "/Analytics5.svg",
   "/Analytics6.svg",
 ];
+
 function PortfolioHero() {
   const leftTrackRef = useRef(null);
   const rightTrackRef = useRef(null);
@@ -66,21 +68,24 @@ function PortfolioHero() {
   }, []);
 
   return (
-    <section className="relative min-h-fit h-auto md:h-[100vh] md:min-h-[600px] overflow-hidden bg-[#e9f4ff] px-4 sm:px-8 md:px-12 lg:px-16 py-12 md:py-20 flex flex-col justify-start md:justify-center items-center isolate gap-10">
+  
+    <section className="relative min-h-fit h-auto md:h-[100vh] md:min-h-[600px] overflow-hidden bg-[#e9f4ff] px-4 sm:px-8 md:px-12 lg:px-16 py-12 md:py-20 flex flex-col justify-start md:justify-center items-start md:items-center isolate gap-10">
       <div className="absolute bottom-0 right-0 w-[70vw] sm:w-[35vw] lg:w-[80vw] h-[60px] bg-gradient-to-b from-indigo-900 via-indigo-400 to-transparent blur-xl opacity-60" />
-      <div className="relative z-20 flex flex-col items-center text-center max-w-xl mx-auto gap-4 pointer-events-auto order-1 md:order-none">
-        <h1 className="text-4xl sm:text-5xl font-medium text-black leading-[1.2] mt-5">
+      
+
+      <div className="relative z-20 flex flex-col items-start text-left md:items-center md:text-center max-w-xl md:mx-auto gap-4 w-full pointer-events-auto order-1 md:order-none">
+        <h1 className="text-4xl sm:text-5xl font-semibold text-black leading-[1.4] md:leading-[1.2] mt-7">
           Crafting Digital Experiences That Drive Growth
         </h1>
 
-        <p className="text-xs text-slate-600 max-w-md mx-auto">
+        <p className="text-xs text-slate-600 max-w-md md:mx-auto">
           Discover how CacheLogic brings ideas to life with cutting-edge design,
           innovative technologies, and impactful solutions. See our portfolio to
           explore the diverse range of projects we've successfully delivered for
           clients worldwide.
         </p>
 
-        <div className="flex flex-wrap gap-3 mt-8">
+        <div className="flex flex-wrap gap-3 mt-7">
           <Button variant="primary" className="px-4 py-2">
             Start Your Project
           </Button>
@@ -99,7 +104,8 @@ function PortfolioHero() {
                   key={`left-1-${i}`}
                   src={src}
                   alt="Project"
-                  className="w-36 sm:w-48 md:w-full h-[70px] sm:h-[110px] md:h-auto lg:md:h-[140px] aspect-[260/140] object-cover rounded-xl image-render-crisp mix-blend-multiply"
+            
+                  className="w-36 sm:w-48 md:w-full min-w-[144px] sm:min-w-[192px] md:min-w-0 h-[70px] sm:h-[110px] md:h-auto lg:md:h-[140px] aspect-[260/140] object-cover rounded-xl image-render-crisp mix-blend-multiply flex-shrink-0"
                 />
               ))}
               {leftImages.map((src, i) => (
@@ -107,7 +113,8 @@ function PortfolioHero() {
                   key={`left-2-${i}`}
                   src={src}
                   alt="Project duplicate"
-                  className="w-36 sm:w-48 md:w-full h-[70px] sm:h-[110px] md:h-auto lg:md:h-[140px] aspect-[260/140] object-cover rounded-xl image-render-crisp mix-blend-multiply"
+            
+                  className="w-36 sm:w-48 md:w-full min-w-[144px] sm:min-w-[192px] md:min-w-0 h-[70px] sm:h-[110px] md:h-auto lg:md:h-[140px] aspect-[260/140] object-cover rounded-xl image-render-crisp mix-blend-multiply flex-shrink-0"
                 />
               ))}
             </div>
@@ -125,7 +132,8 @@ function PortfolioHero() {
                   key={`right-1-${i}`}
                   src={src}
                   alt="Project"
-                  className="w-36 sm:w-48 md:w-full h-[70px] sm:h-[110px] md:h-auto lg:md:h-[140px] aspect-[260/140] object-cover rounded-xl image-render-crisp mix-blend-multiply"
+        
+                  className="w-36 sm:w-48 md:w-full min-w-[144px] sm:min-w-[192px] md:min-w-0 h-[70px] sm:h-[110px] md:h-auto lg:md:h-[140px] aspect-[260/140] object-cover rounded-xl image-render-crisp mix-blend-multiply flex-shrink-0"
                 />
               ))}
               {rightImages.map((src, i) => (
@@ -133,7 +141,8 @@ function PortfolioHero() {
                   key={`right-2-${i}`}
                   src={src}
                   alt="Project duplicate"
-                  className="w-36 sm:w-48 md:w-full h-[70px] sm:h-[110px] md:h-auto lg:md:h-[140px] aspect-[260/140] object-cover rounded-xl image-render-crisp mix-blend-multiply"
+        
+                  className="w-36 sm:w-48 md:w-full min-w-[144px] sm:min-w-[192px] md:min-w-0 h-[70px] sm:h-[110px] md:h-auto lg:md:h-[140px] aspect-[260/140] object-cover rounded-xl image-render-crisp mix-blend-multiply flex-shrink-0"
                 />
               ))}
             </div>

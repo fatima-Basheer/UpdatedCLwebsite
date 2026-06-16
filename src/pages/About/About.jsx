@@ -10,7 +10,9 @@ function About() {
       />
 
       <div className="flex-[1.3] flex flex-col items-center lg:items-start justify-center text-center lg:text-left z-10 mt-10 md:mt-0">
-        <h2 className="text-white text-3xl sm:text-4xl 2xl:text-5xl font-semibold">About Us</h2>
+        <h2 className="text-white text-3xl sm:text-4xl 2xl:text-5xl font-semibold">
+          About Us
+        </h2>
         <p className="text-gray-400 text-xs mt-5 lg:mt-7 2xl:text-sm max-w-md lg:max-w-none">
           Born out of a passion for solving complex challenges, CacheLogics
           started as a small team of innovators helping startups bring their

@@ -40,14 +40,14 @@ const socialLinks = [
 
 function Footer() {
   return (
-    <footer className="relative bg-black text-white py-12 md:py-20 flex flex-col items-center justify-center text-center">
+    <footer className="relative bg-black text-white py-16 md:py-20  flex flex-col items-center justify-center text-center">
       <div className="hidden md:block bg-black h-20"></div>
 
       <div className="relative md:absolute md:top-15 max-w-3xl flex flex-col items-center w-full z-20">
-        <h1 className="text-white font-medium text-3xl sm:text-4xl md:text-5xl px-2">
+        <h1 className="text-white font-medium text-2xl sm:text-4xl md:text-5xl px-2">
           Let's Build Something Worth Building.
         </h1>
-        <p className="text-xs text-gray-400 my-5 max-w-5xl leading-relaxed">
+        <p className=" text-[10px] sm:text-xs text-gray-400 my-5 max-w-5xl leading-relaxed px-4">
           Whether you have a fully scoped project or just a problem that needs
           solving, book a free 45-minute advisory call. We'll tell you exactly
           what we think, and exactly what we'd do.
@@ -75,25 +75,25 @@ function Footer() {
         />
       </div>
 
-      <div className="relative md:absolute md:bottom-4 w-full max-w-7xl grid md:mt-20 grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 py-6 md:py-12 text-left sm:text-center md:text-left z-20 px-4 md:px-6">
+      <div className="relative md:absolute md:bottom-4 w-full max-w-7xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 py-6 md:py-12 text-left sm:text-center md:text-left z-20 px-6">
         <div className="flex flex-col items-start sm:items-center md:items-start text-left sm:text-center md:text-left">
           <img
             src="/Logo.svg"
             className="w-28 sm:w-32 invert brightness-0"
             alt="CacheLogic Logo"
           />
-          <p className="text-sm text-gray-300 mt-6 font-medium">
-            Fast-Tracking Your IT Evolution.
+          <p className="text-[12px] text-white/50 mt-6 leading-[1.2]">
+            Engineering AI-Powered Software That Works For You.
           </p>
-          <p className="text-xs text-gray-400 leading-5 mt-4">
+          <p className="text-[12px] text-white/50 leading-5 mt-4 leading-[1.2]">
             Empowering businesses with cutting-edge technology and tailored
             solutions.
           </p>
-          <div className="flex gap-3 mt-6">
+          <div className="flex gap-4 mt-6">
             {socialLinks.map((item, i) => (
               <a
                 key={i}
-                className="text-gray-400 text-xl hover:text-blue-500 transition bg-zinc-900 p-2.5 rounded-lg"
+                className="text-gray-400 text-sm md:text-xl hover:text-blue-500 transition bg-zinc-900 p-2 md:p-2.5 rounded-lg"
               >
                 {item.icon}
               </a>
@@ -109,7 +109,8 @@ function Footer() {
             <h2 className="text-sm mb-4 md:mb-6 text-gray-200 w-full sm:w-auto">
               {section.title}
             </h2>
-            <ul className="space-y-3 md:space-y-4 text-[10px] text-gray-400 w-full">
+          
+            <ul className="grid grid-cols-2 gap-x-4 gap-y-3 sm:flex sm:flex-col sm:space-y-3 md:space-y-4 text-[10px] text-gray-400 w-full">
               {section.links.map((link, idx) => (
                 <li key={idx}>
                   <a className="hover:text-white transition text-[12px] block">
@@ -134,7 +135,7 @@ function Footer() {
               >
                 <div className="p-2 bg-[#222] rounded-full">
                   {" "}
-                  <MdOutlineMailOutline className="text-2xl text-gray-300" />
+                  <MdOutlineMailOutline className=" text-[14px] md:text-2xl text-gray-300 " />
                 </div>
                 <span className="text-xs ml-2">info@cachelogic.tech</span>
               </a>
@@ -147,7 +148,7 @@ function Footer() {
               >
                 <div className="p-2 bg-[#222] rounded-full">
                   {" "}
-                  <CiPhone className="text-2xl text-gray-300" />
+                  <CiPhone className="text-[14px] md:text-2xl text-gray-300" />
                 </div>
                 <span className="text-xs ml-2">+313 5685469</span>
               </a>
@@ -156,9 +157,9 @@ function Footer() {
             <li>
               <a className="hover:text-white transition inline-flex items-center gap-2 sm:justify-center md:justify-start">
                 <div className="p-2 bg-[#222] rounded-full">
-                  <IoIosLink className="text-2xl text-gray-300" />
+                  <IoIosLink className="text-[14px] md:text-2xl text-gray-300" />
                 </div>
-                <span className="text-xs ml-2">www.cachelogic.com</span>
+                <span className="text-xs ml-2">://cachelogic.com</span>
               </a>
             </li>
           </ul>
@@ -201,7 +202,7 @@ function Footer() {
                 <div className="text-white/50 text-xs font-medium">
                   Engineering & Delivery Center:
                 </div>
-                <a className="text-[12px] text-white transition mt-0.5">
+                  <a className="text-[12px] text-white transition mt-0.5">
                   Lahore, Punjab, Pakistan
                 </a>
               </div>

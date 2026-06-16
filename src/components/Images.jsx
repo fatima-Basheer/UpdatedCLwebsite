@@ -1,53 +1,51 @@
 import React, { useEffect, useRef, useState } from "react";
-  const images = [
-    {
-      src: "/img.jpg",
-      title: "Minal Ali",
-      description:
-        "The AI-powered recommendations they built increased our conversion rate significantly.",
-    },
-    {
-      src: "/img2.jpg",
-      title: "Ahmad Basheer",
-      description:
-        "Cachelogics transformed our outdated systems into a modern powerhouse",
-    },
-    {
-      src: "/img3.jpg",
-      title: "Farhad Muhammad",
-      description:
-        "The AI-powered recommendations they built increased our conversion rate significantly.",
-    },
-    {
-      src: "/img4.jpg",
-      title: "Muhammad Ahtzaz",
-      description:
-        "Cachelogics transformed our outdated systems into a modern powerhouse",
-    },
-    {
-      src: "/img5.jpg",
-      title: "Maryum Basheer",
-      description:
-        "The AI-powered recommendations they built increased our conversion rate significantly.",
-    },
-    {
-      src: "/img6.jpg",
-      title: "Ibrahim Rafeeq",
-      description:
-        "Cachelogics transformed our outdated systems into a modern powerhouse",
-    },
-    {
-      src: "/img7.jpg",
-      title: "Ayesha Awais",
-      description:
-        "The AI-powered recommendations they built increased our conversion rate significantly. ",
-    },
-  ];
+const images = [
+  {
+    src: "/img.jpg",
+    title: "Minal Ali",
+    description:
+      "The AI-powered recommendations they built increased our conversion rate significantly.",
+  },
+  {
+    src: "/img2.jpg",
+    title: "Ahmad Basheer",
+    description:
+      "Cachelogics transformed our outdated systems into conversion  a modern powerhouse",
+  },
+  {
+    src: "/img3.jpg",
+    title: "Farhad Muhammad",
+    description:
+      "The AI-powered recommendations they built increased our conversion rate significantly.",
+  },
+  {
+    src: "/img4.jpg",
+    title: "Muhammad Ahtzaz",
+    description:
+      "Cachelogics transformed our outdated systems into a modern conversion  powerhouse",
+  },
+  {
+    src: "/img5.jpg",
+    title: "Maryum Basheer",
+    description:
+      "The AI-powered recommendations they built increased our conversion rate significantly.",
+  },
+  {
+    src: "/img6.jpg",
+    title: "Ibrahim Rafeeq",
+    description:
+      "Cachelogics transformed our outdated systems into a conversion  modern powerhouse",
+  },
+  {
+    src: "/img7.jpg",
+    title: "Ayesha Awais",
+    description:
+      "The AI-powered recommendations they built increased our conversion rate significantly. ",
+  },
+];
 function Images() {
-
-
   const [index, setIndex] = useState(0);
-  const STEP = 80; 
+  const STEP = 90;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -58,8 +56,8 @@ function Images() {
   }, []);
 
   return (
-    <div className="flex flex-col items-start py-10 w-full max-w-sm mt-8">
-      <div className="w-full overflow-hidden border-2 border-white/70 rounded-full py-1.5 px-1.5">
+    <div className="flex flex-col items-start pb-4 w-full max-w-lg mt-18">
+      <div className="w-full overflow-hidden border-2 border-white md:border-white/70  rounded-full py-1.5 px-1.5 z-10">
         <div
           className="flex items-center transition-transform duration-700 ease-in-out"
           style={{
@@ -87,16 +85,15 @@ function Images() {
         </div>
       </div>
 
-      
-      <div className="flex ml-5 mt-3 items-start gap-3">
-        <div className="w-40 h-18 border-l border-b border-black" />
+      <div className="flex ml-6 mt-3 items-start md:gap-3">
+        <div className="w-0 md:w-76 h-10 md:h-18 border-l-2 border-b-2 border-dotted  border-black " />
 
-        <div className="mt-12">
+        <div className="mt-12 mr-6 md:mr-0 ">
           <p className="text-sm font-semibold text-gray-800">
             {images[index].title}
           </p>
 
-          <p className="text-xs text-gray-600 leading-4 mt-1">
+          <p className=" text-xs text-gray-600 leading-4 mt-1 max-w-sm">
             {images[index].description}
           </p>
         </div>

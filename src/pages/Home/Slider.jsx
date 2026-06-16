@@ -128,21 +128,21 @@ const Slider = () => {
   return (
     <div
       ref={containerRef}
-      className="relative m-0 p-0 h-screen w-screen bg-blue-100 text-black overflow-hidden select-none font-['Manrope']"
+      className="m-0 p-0 h-screen w-screen bg-[#e9f4ff]  text-black overflow-hidden select-none font-['Manrope'] flex flex-col items-center"
     >
-      <h1 className="text-center text-[24px] sm:text-[28px] 2xl:text-[50px] font-semibold m-0 pt-10 leading-tight relative z-10">
+      <h1 className="text-center text-[24px] sm:text-[28px] 2xl:text-[50px] font-semibold m-0 pt-10 leading-tight relative z-10 flex-none">
         What Our Client Says
       </h1>
 
-      <section
-        className="absolute bottom-0 left-0 w-full h-[85vh] overflow-hidden flex items-center justify-center mt-50 z-20"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
-        <div className="relative w-0 h-0 bottom-[10vh]">
+
+      <section className="relative w-full h-[500px] mt-[30px] overflow-hidden flex items-start justify-center z-20">
+    
+        <div className="relative w-0 h-0 top-[230px] mb-[20px]">
           {wheelCards.map((slide, index) => (
             <div
               key={index}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
               className="wheel-card group absolute w-[300px] h-[400px] max-w-[300px] max-h-[400px] min-w-[300px] min-h-[400px] cursor-pointer rounded-[24px] overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.3)] bg-white origin-bottom flex flex-col items-stretch justify-start"
             >
               <div className="absolute z-20 cursor-pointer overflow-hidden rounded-full bg-white flex items-center justify-center top-[18px] right-[18px] w-[42px] h-[42px]">
@@ -158,19 +158,19 @@ const Slider = () => {
                 />
               </div>
 
-              <div className="absolute left-[15px] right-[15px] bottom-[15px] bg-black/70 border-t-2 border-r-1 border-l-2 border-b-1 border-white text-white p-4 rounded-[20px] translate-y-[120%] transition-transform duration-[450ms] ease-in-out group-hover:translate-y-0 z-10">
+              <div className="absolute left-[15px] right-[15px] bottom-[15px] bg-black/70 backdrop-blur-[2px] border-t-2 border-l-2 border-white text-white p-4 rounded-[20px] translate-y-[120%] transition-transform duration-[450ms] ease-in-out group-hover:translate-y-0 z-10">
                 <h2 className="font-semibold mb-1 text-[18px]">
                   {slide.client}
                 </h2>
-                <p className="text-gray-200 leading-[1.5] text-[12px] max-h-[100px] overflow-hidden">
+                <p className="text-gray-200 leading-[1.5] text-[13px] max-h-[100px] overflow-hidden mt-5">
                   {slide.review}
                 </p>
 
                 <div className="flex justify-between items-center mt-3">
-                  <span className="font-medium text-white/90 text-[14px]">
+                  <span className="font-medium text-white/90 text-[16px]">
                     CTO
                   </span>
-                  <span className="font-bold text-[22px]">Google</span>
+                  <span className="font-bold text-[24px]">Google</span>
                 </div>
               </div>
             </div>

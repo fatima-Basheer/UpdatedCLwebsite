@@ -2,10 +2,11 @@ import { HiMiniMagnifyingGlass } from "react-icons/hi2";
 
 function BlogHero() {
   return (
-    <section className="relative h-auto overflow-hidden bg-[#e9f4ff] px-4 sm:px-8 md:px-12 lg:px-16 py-16 sm:py-20 md:py-28 2xl:py-40 flex flex-col justify-center items-center">
+    <section className="relative h-auto overflow-hidden bg-[#e9f4ff] px-4 sm:px-8 md:px-12 lg:px-16 py-16 sm:py-20 md:py-28 2xl:py-40 flex flex-col justify-center items-start md:items-center">
       <div className="absolute top-0 right-0 w-[60vw] sm:w-[35vw] lg:w-[50vw] h-[80px] bg-gradient-to-b from-indigo-900 via-indigo-400 to-transparent blur-xl opacity-80" />
 
-      <div className="relative z-10 flex flex-col items-center text-center max-w-3xl mx-auto gap-4">
+  
+      <div className="relative z-10 flex flex-col items-start text-left md:items-center md:text-center max-w-3xl mx-auto gap-4 w-full mt-10 md:mt-5">
         <div className="text-sm font-medium text-gray-600 py-2 px-4 bg-white rounded-full">
           Blogs
         </div>

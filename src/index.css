@@ -368,3 +368,7 @@ body,
 .animate-previewInOut {
   animation: previewInOut 0.8s ease-in-out forwards;
 }
+
+html, body, #root, .native-scroll-fix {
+  scroll-behavior: auto !important; 
+}

@@ -8,100 +8,74 @@ import Images from "../../components/Images";
 import Header from "../../components/Header";
 
 function Hero() {
-  const container = useRef();
-
-  useGSAP(
-    () => {
-      gsap.from(".hero-word", {
-        opacity: 0,
-        y: 50,
-        stagger: 0.08,
-        duration: 0.9,
-        ease: "power3.out",
-      });
-
-      gsap.from(".hero-content", {
-        opacity: 0,
-        y: 30,
-        duration: 1,
-        delay: 0.2,
-      });
-    },
-    { scope: container },
-  );
-
   return (
-    <div
-      ref={container}
-      className="relative min-h-[100vh] md:min-h-[700px] overflow-hidden bg-[#e9f4ff]"
-    >
-      <div className="absolute top-0 right-0 w-[60vw] sm:w-[35vw] lg:w-[50vw] h-[80px] bg-gradient-to-b from-indigo-900 via-indigo-400 to-transparent blur-xl opacity-80" />
+    <div className="relative min-h-screen overflow-hidden bg-[#e9f4ff] flex flex-col justify-between">
+      <div className="absolute top-0 right-0 w-[60vw] sm:w-[35vw] lg:w-[50vw] h-[60px] bg-gradient-to-b from-indigo-900 via-indigo-400 to-transparent blur-xl opacity-80 pointer-events-none" />
 
       <Header />
 
-      <div className="absolute inset-0 z-20 pointer-events-none hidden lg:block">
-        <Stair />
-      </div>
+  <div className="absolute inset-0 z-20 pointer-events-none">
+  <Stair />
+</div>
 
-      <section className="relative z-10 w-full">
+      <section className="relative z-10 w-full flex-1 flex items-center">
         <div
           className="
             hero-content
-            max-w-[1200px]
             mx-auto
             px-4
-            sm:px-6
-            md:px-4
-            pt-24
-            sm:pt-28
-            md:pt-32
-            lg:pt-36
-            xl:pt-48
-            pb-12
-            md:pb-8
+            sm:px-8
+            lg:px-20
+            2xl:px-80
+            pt-26
+            lg:pt-44
+            pb-5
             flex
             flex-col
             md:flex-row
-            items-center
-            md:items-center
+            items-start
             justify-between
-            gap-10
-            md:gap-5
-          "
+            gap-4
+            w-full"
         >
-          <div className="flex flex-col items-center md:items-start text-center md:text-left max-w-xl w-full">
-            <span className="mb-4 inline-flex items-center rounded-full bg-white px-4 py-2 text-xs sm:text-sm text-black/80 shadow-md hover:bg-black hover:text-white transition-all">
+          <div className="flex flex-col items-start text-left flex-[1.3] text-wrap">
+            <span className="mb-2 inline-flex items-center rounded-full bg-white px-4 py-2 text-[14px] text-black/70 shadow-sm hover:bg-black hover:text-white transition-all cursor-pointer">
               Welcome to CacheLogic
             </span>
 
-            <h1 className="text-black/90 text-3xl sm:text-4xl lg:text-5xl font-semibold leading-[1.2] tracking-tight">
-              Engineering AI-Powered 
-              Software That Works For
-              You.
+            <h1 className="text-gray-800 text-5xl font-semibold leading-[1.3] mt-4 tracking-normal whitespace-normal break-wordsnormal-case max-w-[325px] md:max-w-[550px] lg:max-w-[570px]">
+              Engineering AI-Powered Software That Works For You.
             </h1>
 
-            <p className="mt-5 max-w-md text-sm sm:text-base md:text-xs text-gray-800 leading-relaxed">
+            <p className="text-xs text-black/90 max-w-[450px] mt-7 capitalize">
               Empowering businesses with cutting-edge technology and tailored
-              Solutions.
+              solutions.
             </p>
 
-            <div className="mt-6 flex flex-col md:flex-row flex-wrap justify-center md:justify-start gap-3 w-full sm:w-auto">
-              <Button variant="primary" className="px-6 py-2.5 text-sm flex-1 sm:flex-initial justify-center">
+            <div className="mt-7 flex flex-row flex-wrap justify-start gap-4 w-full sm:w-auto">
+              <Button
+                variant="primary"
+              
+              
+              >
                 Contact Us
               </Button>
-              <Button variant="outline" className="px-4 py-2.5 text-sm flex-1 sm:flex-initial justify-center">
-                Discover your Services
+              <Button
+                variant="outline"
+      
+              >
+                Discover our Services
               </Button>
             </div>
 
-            <div className="mt-8 w-full flex justify-center md:justify-start">
+            <div className="max-w-[250px] md:max-w-[450px] flex justify-start">
               <Images />
             </div>
           </div>
 
-          <div className="hidden md:block w-full md:w-[35%] lg:w-[42%] overflow-hidden transform md:-translate-x-6 md:-translate-y-30">
+          <div className="pl-10 sm:pl-0 h-[300px] sm:h-[400px] md:h-[440px] 2xl:h-[560px] w-auto overflow-hidden rounded-lg md:pr-40">
             <video
-              className="w-full h-auto max-h-[450px] block mix-blend-multiply object-cover"
+              className="h-full w-auto object-contain block mix-blend-multiply"
               src="./hero-section-animation2.mp4"
               autoPlay
               loop
