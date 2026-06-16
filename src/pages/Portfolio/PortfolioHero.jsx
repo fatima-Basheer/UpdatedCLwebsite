@@ -70,7 +70,8 @@ function PortfolioHero() {
   return (
   
     <section className="relative min-h-fit h-auto md:h-[100vh] md:min-h-[600px] overflow-hidden bg-[#e9f4ff] px-4 sm:px-8 md:px-12 lg:px-16 py-12 md:py-20 flex flex-col justify-start md:justify-center items-start md:items-center isolate gap-10">
-      <div className="absolute bottom-0 right-0 w-[70vw] sm:w-[35vw] lg:w-[80vw] h-[60px] bg-gradient-to-b from-indigo-900 via-indigo-400 to-transparent blur-xl opacity-60" />
+<div className="absolute bottom-0 left-0 right-0 z-0 h-[140px] w-full bg-gradient-to-r from-[#0622E4]/30 from-0%  via-50% to-[#B430F1]/50 to-100% blur-2xl" />
+
       
 
       <div className="relative z-20 flex flex-col items-start text-left md:items-center md:text-center max-w-xl md:mx-auto gap-4 w-full pointer-events-auto order-1 md:order-none">

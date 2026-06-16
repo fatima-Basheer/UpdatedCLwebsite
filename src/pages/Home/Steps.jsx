@@ -80,8 +80,9 @@ function Steps() {
     >
       
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-[180px] pointer-events-none z-0 bg-[radial-gradient(ellipse_at_top,rgba(6,34,228,0.35)_0%,rgba(6,34,228,0.15)_40%,transparent_80%)] blur-[25px] group-hover:opacity-100 transition-opacity duration-500" />
+<div className="absolute bottom-0 left-0 right-0 h-[120px] pointer-events-none z-10 bg-[linear-gradient(to_right,rgb(16,185,129)_0%,rgb(6,182,212)_25%,rgb(6,34,228)_50%,rgb(59,130,246)_75%,rgb(16,185,129)_100%)] blur-[7px] opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-700 ease-out" />
 
-      <div className="absolute bottom-0 left-0 right-0 h-[100px] pointer-events-none z-0 bg-[linear-gradient(to_right,rgba(16,185,129,0.3)_0%,rgba(14,165,243,0.15)_25%,rgba(90,126,233,0.1)_75%,rgba(16,185,129,0.3)_100%)] blur-[10px] opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-700 ease-out" />
+
 
       <div className="relative z-10 flex flex-col w-full h-full min-h-[inherit]">
         <div className="flex justify-between flex-row items-center shrink-0">
@@ -113,7 +114,12 @@ function Steps() {
 
   return (
     <div className="relative overflow-hidden py-16 sm:py-20 md:py-24 bg-black px-0 md:px-4">
-      <div className="absolute bottom-0 left-0 right-0 w-full h-[120px] bg-[linear-gradient(to_right,rgba(59,130,246,0.8),rgba(168,85,247,0.8),transparent)] blur-2xl z-0" />
+<div className="absolute bottom-0 left-0 right-0 z-0 h-[140px] w-full bg-gradient-to-r from-[#0622E4]/30 from-0%  via-50% to-[#B430F1]/50 to-100% blur-2xl" />
+
+
+
+
+
 
       <div className="relative z-10 text-white text-center mb-14 px-4">
         <h1 className="text-2xl sm:text-4xl lg:text-5xl font-semibold leading-tight">
@@ -125,9 +131,9 @@ function Steps() {
         </p>
       </div>
 
-      <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-[220px] pointer-events-none z-50 blur-[8px] opacity-80 mix-blend-mode-screen">
+      <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-[160px] pointer-events-none z-50 blur-[10px] opacity-80 mix-blend-mode-screen">
         <div
-          className="w-full h-full bg-[linear-gradient(to_bottom,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0.12)_50%,rgba(255,255,255,0.05)_80%,transparent_100%)]"
+          className="w-full h-full bg-[linear-gradient(to_bottom,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0.12)_50%,rgba(255,255,255,0.3)_80%,transparent_100%)]"
           style={{
             clipPath: "polygon(50% 0%, 0% 100%, 100% 100%)",
           }}

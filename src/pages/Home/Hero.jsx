@@ -10,7 +10,8 @@ import Header from "../../components/Header";
 function Hero() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#e9f4ff] flex flex-col justify-between">
-      <div className="absolute top-0 right-0 w-[60vw] sm:w-[35vw] lg:w-[50vw] h-[60px] bg-gradient-to-b from-indigo-900 via-indigo-400 to-transparent blur-xl opacity-80 pointer-events-none" />
+<div className="absolute top-0 right-0 w-[60vw] sm:w-[35vw] lg:w-[50vw] h-[60px] bg-gradient-to-b from-[#0622E4] via-[#0622E4]/70  blur-xl pointer-events-none" />
+
 
       <Header />
 
