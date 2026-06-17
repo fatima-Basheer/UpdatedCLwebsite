@@ -13,7 +13,7 @@ import Cybersecurity from "./pages/Services/Cybersecurity";
 import Devops from "./pages/Services/Devops";
 import Enterprise from "./pages/Services/Enterprise";
 import WebMobile from "./pages/Services/WebMobile";
-
+import Globe from './components/Globe'
 function App() {
   return (
     <>
@@ -33,6 +33,7 @@ function App() {
           <Route path="/services/enterprise" element={<Enterprise />} />
         </Route>
       </Routes>
+    
     </>
   );
 }

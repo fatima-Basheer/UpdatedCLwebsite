@@ -1,158 +1,258 @@
-import React, { useEffect, useRef, useState } from 'react';
-import createGlobe from 'cobe';
+import createGlobe from "cobe";
+import { useEffect, useRef } from "react";
 
-export default function Globe() {
-  const canvasRef = useRef(null);
-  const [labels, setLabels] = useState([]);
+const markers = [
+  {
+    id: "pakistan",
+  location: [50, 80],
+    label: "LAHORE PK",
+    des: "Engineering & Delivery Center",
+    flagUrl: "/flag.png",
+  },
+  {
+    id: "netherlands",
+  location: [52, -20],
+    label: "AMSTERDAM NL",
+    des: "Global headquraters",
+    flagUrl: "/download.png",
+  },
+];
 
-
-  const PakistanCoords = [33.6844, 73.0479];
-  const USACoords = [38.9072, -77.0369];
+const Globe = () => {
+  const canvasRef = useRef();
 
   useEffect(() => {
     let phi = 0;
-    let width = 0;
+    let req;
 
-
-    const onResize = () => {
-      if (canvasRef.current) {
-        width = canvasRef.current.offsetWidth;
-      }
-    };
-    window.addEventListener('resize', onResize);
-    onResize();
-
-    const locations = [
-      { id: 'pakistan', label: 'Pakistan', coords: PakistanCoords },
-      { id: 'usa', label: 'USA', coords: USACoords }
-    ];
-
+    // We detect screens smaller than 768px wide to conditionally remove arcs dynamically
+    const isSmallScreen = window.innerWidth <= 768;
 
     const globe = createGlobe(canvasRef.current, {
       devicePixelRatio: 2,
-      width: width * 2,
-      height: width * 2,
+      width: 1300 * 2,
+      height: 1300 * 2,
       phi: 0,
-      theta: 0.3, 
-      dark: 0,
-      diffuse: 1.2,
-      mapSamples: 16000,
-      mapBrightness: 6,
-      baseColor:[1,1,1],
-      markerColor: [0.2, 0.4, 1],
-      glowColor: [0.9, 0.9, 0.9],
-      markers: locations.map(loc => ({ location: loc.coords, size: 0.04, id: loc.id })),
-      arcs: [
-        { from: PakistanCoords, to: USACoords, id: 'pak-usa-arc' }
-      ],
-      arcColor: [0.1, 0.3, 0.9], 
-      arcWidth: 1.5,          
-      arcHeight: 0.4,         
-      
-    
-      onRender: (state) => {
-    
-        phi += 0.005;
-        state.phi = phi;
-
-    
-        const calculatedLabels = locations.map(loc => {
-          const [lat, lon] = loc.coords;
-          
-    
-          const rLat = (lat * Math.PI) / 180;
-          const rLon = (lon * Math.PI) / 180;
-          const sPhi = state.phi - rLon - Math.PI / 2;
-          
-
-          const x = Math.cos(rLat) * Math.sin(sPhi);
-          const y = Math.sin(rLat) * Math.cos(state.theta) - Math.cos(rLat) * Math.cos(sPhi) * Math.sin(state.theta);
-          const z = Math.sin(rLat) * Math.sin(state.theta) + Math.cos(rLat) * Math.cos(sPhi) * Math.cos(state.theta);
-
-
-          const left = `${(x * 0.5 + 0.5) * 100}%`;
-          const top = `${(-y * 0.5 + 0.5) * 100}%`;
-          
-        
-          const isVisible = z > 0; 
-
-          return { ...loc, left, top, isVisible };
-        });
-
-        setLabels(calculatedLabels);
-      }
+      theta: 0.1,
+      dark: 1,
+      diffuse: 2,
+      mapSamples: 10000,
+      mapBrightness: 8,
+      baseColor: [0.15, 0.15, 0.2],
+      markerColor: [0.1, 0.15, 0.4],
+      glowColor: [0.1, 0.15, 0.4],
+      markers: markers.map((m) => ({
+        location: m.location,
+        size: 0,
+        id: m.id,
+      })),
+      // 👇 Turn off arcs conditionally if screen size is mobile/small
+      arcs: isSmallScreen
+        ? []
+        : [
+            {
+              from: markers[1].location,
+              to: markers[0].location,
+            },
+          ],
+      arcColor: [0.1, 0.15, 0.4],
+      arcWidth: 1.7,
+      arcHeight: 0.2,
     });
 
+    const animate = () => {
+      phi += 0.01;
+      globe.update({ phi });
+      req = requestAnimationFrame(animate);
+    };
+    animate();
 
     return () => {
+      cancelAnimationFrame(req);
       globe.destroy();
-      window.removeEventListener('resize', onResize);
     };
   }, []);
 
   return (
-    <div style={styles.container}>
-      <div style={styles.wrapper}>
+    <div className="App">
+      <style>
+        {`
+      
+          
+        
+          
+          .globe-wrapper {
+            position: absolute;
+            bottom: 0;              
+            left: 50%;              
+            transform: translateX(-50%); 
+            width: 100%;
+            max-width: 1200px;      
+            aspect-ratio: 100 / 30;    
+            overflow: hidden;       
+          }
 
-        <canvas
-          ref={canvasRef}
-          style={styles.canvas}
-        />
+          .globe-container {
+            width: 100%;
+            aspect-ratio: 1 / 1;    
+            position: absolute;
+            top: 0;                 
+            left: 0;
+          }
 
+          .marker-label {
+            position: absolute;
+            bottom: anchor(top);
+            left: anchor(center);
+            transform: translate(-50%, -10px);
+            pointer-events: none;
+            transition: opacity 0.3s;
+            width: max-content; 
+          }
 
-        {labels.map((node) => (
-          <div
-            key={node.id}
+          /* 👇 SMALL SCREEN DEVICES OVERRIDES (ONLY APPLIES TO MOBILE) 👇 */
+          @media (max-width: 768px) {
+            .globe-wrapper {
+              position: fixed; /* 💡 Force layout to attach explicitly at the screen viewport bottom */
+              bottom: 0;
+              left: 0;
+              transform: none;
+              width: 100%;
+              max-width: 100vw;
+              height: 320px; /* 💡 Space allocation to contain the 50% dome crop + stacked text column */
+              aspect-ratio: auto; 
+              overflow: hidden; /* Slices away the lower half of the globe cleanly */
+              display: flex;
+              flex-direction: column;
+              justify-content: flex-end;
+            }
+
+            .globe-container {
+              position: relative;
+              width: 100%;
+              height: 100%;
+              aspect-ratio: auto;
+              display: flex;
+              flex-direction: column; /* 💡 Stacks the text blocks into a column */
+              justify-content: flex-end; 
+              align-items: center;
+              gap: 12px; /* Adds clean spacing between stacked blocks */
+              padding-bottom: 20px; /* Moves content up slightly from screen bezel edge */
+              box-sizing: border-box;
+            }
+
+            canvas {
+              position: absolute; 
+              bottom: -50%; /* 💡 Pushes the exact bottom 50% of the globe circle below screen visibility limit */
+              left: 50%;
+              transform: translateX(-50%);
+              z-index: 1; /* Pushes the globe layout context layer right beneath text cards */
+              width: 100vw !important;
+              height: 100vw !important; /* Preserves 1:1 circular aspect ratio tracking */
+              max-width: 500px; 
+              max-height: 500px;
+              pointer-events: none;
+            }
+
+            .marker-label {
+              position: relative !important;
+              bottom: auto !important;
+              left: auto !important;
+              transform: none !important;
+              opacity: 1 !important; /* Forces total visibility bypass over spinning states */
+              width: auto;
+              pointer-events: auto;
+              z-index: 5; /* Confirms text layers stay crisp on top of background maps */
+            }
+          }
+        `}
+      </style>
+
+      <div
+        style={{ paddingTop: "50px", position: "relative", zIndex: 10 }}
+      ></div>
+
+      <div className="globe-wrapper">
+        <div className="globe-container">
+          <canvas
+            ref={canvasRef}
             style={{
-              ...styles.label,
-              left: node.left,
-              top: node.top,
-              opacity: node.isVisible ? 1 : 0,
-              pointerEvents: node.isVisible ? 'auto' : 'none',
+              width: "100%",
+              height: "100%",
+              display: "block",
             }}
-          >
-            {node.label}
-          </div>
-        ))}
+          />
+          {markers.map((m) => (
+            <div
+              key={m.id}
+              className="marker-label"
+              style={{
+                positionAnchor: `--cobe-${m.id}`,
+                opacity: `var(--cobe-visible-${m.id}, 0)`,
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  border: "1px solid #999",
+                  padding: "10px 15px",
+
+                  height: "56px",
+                  width: "270px",
+                  gap: "10px",
+                  alignItems: "center",
+                  backgroundColor: "rgba(255,255,255,0.1)",
+                  borderRadius: "30px",
+                  backdropFilter: "blur(4px)",
+                }}
+              >
+                <img
+                  src={m.flagUrl}
+                  alt={`${m.label} flag`}
+                  style={{
+                    height: "35px",
+                    width: "35px",
+                    flexShrink: 0,
+                    borderRadius: "50%",
+                    objectFit: "cover",
+                  }}
+                />
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    textAlign: "left",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  <span
+                    style={{
+                      fontSize: "10.5px",
+                      fontWeight: "bold",
+                      color: "gray",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    {m.label}
+                  </span>
+                  <span
+                    style={{
+                      fontSize: "12px",
+                      marginTop: "1px",
+                      letterSpacing: "0.5px",
+                      color: "white",
+                    }}
+                  >
+                    {m.des}
+                  </span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
-}
-
-
-const styles = {
-  container: {
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fafafa',
-    padding: '2rem',
-  },
-  wrapper: {
-    width: '100%',
-    maxWidth: '600px',
-    aspectRatio: '1 / 1',
-    position: 'relative',
-    overflow: 'hidden',
-  },
-  canvas: {
-    width: '100%',
-    height: '100%',
-    cursor: 'grab',
-  },
-  label: {
-    position: 'absolute',
-    transform: 'translate(-50%, -140%)', 
-    backgroundColor: '#ffffff',
-    color: '#1a1a1a',
-    padding: '4px 10px',
-    borderRadius: '6px',
-    fontSize: '12px',
-    fontWeight: '600',
-    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
-    border: '1px solid #e2e8f0',
-    whiteSpace: 'nowrap',
-    transition: 'opacity 0.15s ease',
-  }
 };
+
+export default Globe;

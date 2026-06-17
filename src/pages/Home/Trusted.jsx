@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-
+import Globe from "../../components/Globe";
 const statsData = [
   { value: "4", label: "years in market" },
   { value: "99", label: "Platform Availability " },
@@ -306,14 +306,16 @@ function Trusted() {
         </div>
       </div>
 
-      <div className="w-full overflow-hidden py-14">
+      <div className="w-full overflow-hidden py-6">
         <div ref={tickerRef} className="flex items-center w-max whitespace-nowrap">
           <img src="movingtext.png" alt="Moving text banner" className="h-7 object-contain" />
           <img src="movingtext.png" alt="Moving text banner duplicate" className="h-7 object-contain" />
         </div>
       </div>
 
-      <div className="w-full flex justify-center items-center mt-auto z-30"></div>
+      {/* <div className="hidden md:block mt-70">
+        <Globe/>
+      </div> */}
     </div>
   );
 }
