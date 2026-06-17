@@ -74,16 +74,15 @@ function Header() {
           </Button>
         </div>
 
-        <button
-          className="lg:hidden z-50 mt-3 mr-3 relative"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          {menuOpen ? (
-            <IoMdClose className="text-xl text-gray-400 ml-5 mt-1 " />
-          ) : (
+      
+        {!menuOpen && (
+          <button
+            className="lg:hidden mt-3 mr-3 relative"
+            onClick={() => setMenuOpen(true)}
+          >
             <IoMdMenu className="text-3xl p-1" />
-          )}
-        </button>
+          </button>
+        )}
       </div>
 
       {servicesHovered && (
@@ -109,9 +108,18 @@ function Header() {
         }`}
       >
         <div>
-          <div className="flex items-center justify-between px-6 ">
+          <div className="flex items-center justify-between px-6">
             <img src="/Logo.svg" alt="Logo" className="w-30 sm:w-36 h-auto" />
+            
+          
+            <button
+              className="text-2xl text-gray-400 hover:text-black transition-colors"
+              onClick={() => setMenuOpen(false)}
+            >
+              <IoMdClose />
+            </button>
           </div>
+          
           <div className="h-[1px] w-full bg-gray-200 my-5"></div>
 
           <nav className="flex flex-col gap-2 font-medium text-[14px] overflow-y-auto max-h-[calc(100vh-180px)] px-4 text-black/80">
@@ -143,7 +151,6 @@ function Header() {
                             }}
                             className="hover:bg-gray-200 hover:text-black/90 px-4 py-2 rounded-xl transition-colors duration-200 flex items-center gap-2 w-full"
                           >
-                            {/* INSTANTIATED ARROW ICON HERE */}
                             <IoIosArrowForward className="text-blue-500 flex-shrink-0 text-xs" />
                             <span>{service.name}</span>
                           </Link>
